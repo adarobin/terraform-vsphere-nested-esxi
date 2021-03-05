@@ -1,13 +1,13 @@
 variable "ova_path" {
   type        = string
-  default     = ""
-  description = "The full path to the ESXi OVA on the local system. If set, then `ova_url` should be explicitly set to \"\"."
+  default     = null
+  description = "The full path to the ESXi OVA on the local system. If set, then `ova_url` should be explicitly set to `null`."
 }
 
 variable "ova_url" {
   type        = string
   default     = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u1_Appliance_Template_v1.ova"
-  description = "The URL to the ESXi OVA. Must be set to \"\" if a value is set for `ova_path`."
+  description = "The URL to the ESXi OVA. Must be set to `null` if a value is set for `ova_path`."
 }
 
 variable "folder_name" {
