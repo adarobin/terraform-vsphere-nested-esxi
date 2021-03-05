@@ -105,10 +105,25 @@ resource "vsphere_virtual_machine" "esxi" {
     inline = [
       # explicitly set the hostname as the first boot script doesn't seem to work
       "esxcli system hostname set --fqdn=${var.hostname}",
+
       # configure DDNS
       "esxcli system settings advanced set -o /Misc/PreferredHostName -s ${var.hostname}",
+
       # flag disks for vSAN if enable_vsan is true
       var.enable_vsan ? "esxcli vsan storage tag add -d ${compact([for disk in self.disk : disk.device_address == "scsi:0:2" ? "naa.${replace(lower(disk.uuid), "-", "")}" : ""])[0]} -t capacityFlash" : "echo vSAN disabled, not configuring",
+
+      # Latest security guidance is to disable slp if you aren't using it
+      # Since this is virtual hardware that is indeed the case
+      # https://kb.vmware.com/s/article/76372
+      "/etc/init.d/slpd stop",
+      "esxcli network firewall ruleset set -r CIMSLP -e 0",
+      "chkconfig slpd off",
+
+      # Latest security guidance is to disable cim if you aren't using it
+      # Since this is virtual hardware that is indeed the case  
+      # https://kb.vmware.com/s/article/1025757
+      "esxcli system wbem set --enable false",
+
       # restart management interface for DDNS to take effect
       "esxcli network ip interface set -e false -i vmk0; esxcli network ip interface set -e true -i vmk0",
     ]
