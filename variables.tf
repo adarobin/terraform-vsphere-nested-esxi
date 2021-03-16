@@ -6,7 +6,7 @@ variable "ova_path" {
 
 variable "ova_url" {
   type        = string
-  default     = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u1_Appliance_Template_v1.ova"
+  default     = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u2_Appliance_Template_v1.ova"
   description = "The URL to the ESXi OVA. Must be set to `null` if a value is set for `ova_path`."
 }
 

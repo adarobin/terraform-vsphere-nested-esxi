@@ -54,7 +54,7 @@ No Modules.
 | network\_id | The ID of the network the nested ESXi Hosts should be attached to. | `string` | n/a | yes |
 | ntp | The NTP server for the nested ESXi host. Defaults to "pool.ntp.org". | `string` | `"pool.ntp.org"` | no |
 | ova\_path | The full path to the ESXi OVA on the local system. If set, then `ova_url` should be explicitly set to `null`. | `string` | `null` | no |
-| ova\_url | The URL to the ESXi OVA. Must be set to `null` if a value is set for `ova_path`. | `string` | `"https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u1_Appliance_Template_v1.ova"` | no |
+| ova\_url | The URL to the ESXi OVA. Must be set to `null` if a value is set for `ova_path`. | `string` | `"https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u2_Appliance_Template_v1.ova"` | no |
 | resource\_pool\_id | The ID of the resource pool the nested ESXi Hosts should be created in. | `string` | n/a | yes |
 | syslog | The syslog server the nested ESXi host should send logs to. Defaults to "" which results in remote syslog not being configured. | `string` | `""` | no |
 | vlan\_id | The VLAN ID the management interface uses. Defaults to `null` which results in one not being configured. | `number` | `null` | no |
