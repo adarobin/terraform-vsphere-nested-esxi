@@ -42,6 +42,10 @@ resource "vsphere_virtual_machine" "esxi" {
   guest_id               = data.vsphere_ovf_vm_template.ova.guest_id
   alternate_guest_name   = data.vsphere_ovf_vm_template.ova.alternate_guest_name
   firmware               = data.vsphere_ovf_vm_template.ova.firmware
+  scsi_type              = data.vsphere_ovf_vm_template.ova.scsi_type
+  scsi_controller_count  = data.vsphere_ovf_vm_template.ova.scsi_controller_count
+  sata_controller_count  = data.vsphere_ovf_vm_template.ova.sata_controller_count
+  ide_controller_count   = data.vsphere_ovf_vm_template.ova.ide_controller_count
   # swap_placement_policy  = data.vsphere_ovf_vm_template.ova.swap_placement_policy
 
   enable_disk_uuid    = true
