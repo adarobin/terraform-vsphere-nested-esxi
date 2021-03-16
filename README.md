@@ -63,8 +63,8 @@ No Modules.
 
 | Name | Description |
 |------|-------------|
-| root\_password | n/a |
-| ssl\_thumbprint | n/a |
-| vsan\_cache\_disks | n/a |
-| vsan\_capacity\_disks | n/a |
+| root\_password | The root password generated for the ESXi host. |
+| ssl\_thumbprint | The thumbprint of the SSL certificate of the ESXi host in the format expected by the `vsphere_host` resource. |
+| vsan\_cache\_disks | A list of available vSAN cache disks. |
+| vsan\_capacity\_disks | A list of available vSAN capacity disks. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
