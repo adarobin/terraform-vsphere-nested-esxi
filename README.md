@@ -2,15 +2,13 @@
 
 Terraform module which creates a nested ESXi virtual machine in a vSphere environment.
 
-Presently, this module does not work with the official `terraform-provider-vsphere`. You must compile the provider from
-[#1339](https://github.com/hashicorp/terraform-provider-vsphere/pull/1339).
-
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | terraform | >= 0.13 |
+| vsphere | >= 1.25.0 |
 
 ## Providers
 
@@ -18,7 +16,7 @@ Presently, this module does not work with the official `terraform-provider-vsphe
 |------|---------|
 | random | n/a |
 | tls | n/a |
-| vsphere | n/a |
+| vsphere | >= 1.25.0 |
 
 ## Modules
 
