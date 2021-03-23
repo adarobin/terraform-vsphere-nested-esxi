@@ -2,6 +2,16 @@
 
 Terraform module which creates a nested ESXi virtual machine in a vSphere environment.
 
+This currently works with the [VirtuallyGhetto](https://www.virtuallyghetto.com/nested-virtualization/nested-esxi-virtual-appliance)
+Nested ESXi Appliances.
+
+It has been tested with vSphere 7.0 Update 1 (and currently defaults to using that image). It will likely work with at least some of
+the other images available.
+
+There is a known issue with this module and vSphere 7.0 Update 2. This release defaults to having
+[SHA-1 disabled for SSH connections](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-vcenter-server-702-release-notes.html#productsupport).
+This prevents Terraform from being able to connect to the host with SSH after deployment due to [#37278](https://github.com/golang/go/issues/37278) in golang.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
@@ -52,7 +62,7 @@ No Modules.
 | network\_id | The ID of the network the nested ESXi Hosts should be attached to. | `string` | n/a | yes |
 | ntp | The NTP server for the nested ESXi host. Defaults to "pool.ntp.org". | `string` | `"pool.ntp.org"` | no |
 | ova\_path | The full path to the ESXi OVA on the local system. If set, then `ova_url` should be explicitly set to `null`. | `string` | `null` | no |
-| ova\_url | The URL to the ESXi OVA. Must be set to `null` if a value is set for `ova_path`. | `string` | `"https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u2_Appliance_Template_v1.ova"` | no |
+| ova\_url | The URL to the ESXi OVA. Must be set to `null` if a value is set for `ova_path`. | `string` | `"https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u1_Appliance_Template_v1.ova"` | no |
 | resource\_pool\_id | The ID of the resource pool the nested ESXi Hosts should be created in. | `string` | n/a | yes |
 | syslog | The syslog server the nested ESXi host should send logs to. Defaults to "" which results in remote syslog not being configured. | `string` | `""` | no |
 | vlan\_id | The VLAN ID the management interface uses. Defaults to `null` which results in one not being configured. | `number` | `null` | no |
